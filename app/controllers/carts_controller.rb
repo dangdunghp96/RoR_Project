@@ -7,5 +7,6 @@ class CartsController < ApplicationController
     @order = current_order
     @order.order_items.destroy_all
     @order_items = @order.order_items
+    @order.save
   end
 end
