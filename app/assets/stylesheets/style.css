@@ -5122,4 +5122,10 @@ table th {
   .flickr_pagination .next_page {
     margin-left: 1em; }
 /* -- //paginate -- */
-
+.container_user {
+    margin: auto;
+    width: 50%;
+    border: 3px solid #ff9900;
+    padding: 10px;
+    text-align: center;
+}

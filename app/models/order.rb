@@ -12,6 +12,17 @@ class Order < ApplicationRecord
     self[:order_status_id] = 2
     save!
   end
+
+  class << self
+    def get_pending_orders
+      where(order_status_id: 2)
+    end
+
+    def get_complete_orders
+      where(order_status_id: 3)
+    end
+  end
+
   private
   def update_subtotal
     self[:subtotal] = subtotal

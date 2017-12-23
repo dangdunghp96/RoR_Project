@@ -8,17 +8,14 @@
 
 <% content_for :content do %>
   <div class="men-wear">
-    <div class="container">
-      <div class="col-md-4">
-        <h3 style="color: #ff9900" align="center">THE USER'S INFORMATION</h3>
-          <p>Name: <% if @user.name %><%= @user.name %><% end %></p>
-          <p>Phone number: <% if @user.phone_number %><%= @user.phone_number %><% end %></p>
-          <p>Address: <% if @user.address %><%= @user.address %><% end %></p>
-        <div class="btn-group" role="group" aria-label="...">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
-          <%= link_to "Logout", logout_path,type: "button" ,class: "btn btn-danger",method: :delete %>
-        </div>
-      </div>
+    <div class="container_user">
+      <h3 style="color: #ff9900" align="center">THE USER'S INFORMATION</h3>
+      <p>Name: <% if @user.name %><%= @user.name %><% end %></p>
+      <p>Phone number: <% if @user.phone_number %><%= @user.phone_number %><% end %></p>
+      <p>Address: <% if @user.address %><%= @user.address %><% end %></p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#editModal">Edit</button>
+      <a href="<%= orders_path %>" type="button" class="btn btn-primary">Order history</a>
+      <%= link_to "Logout", logout_path,type: "button" ,class: "btn btn-danger",method: :delete %>
     </div>
   </div>
   <!-- Modal -->
