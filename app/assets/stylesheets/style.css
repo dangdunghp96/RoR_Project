@@ -2810,6 +2810,17 @@ td.invert-image a img {
     border-top: 1px solid #ccc;
     padding: 20px 0 0;
 }
+.checkout-left-basket .checkout-btn a {
+    float: right;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    background-color: #FDA30E;
+    border-color: #FDA30E;
+}
+.checkout-left-basket .checkout-btn a:hover {
+    background-color: blue;
+    border-color: blue;
+ }
 .checkout-right-basket a{
 	padding:10px 30px;
 	color:#fff;
