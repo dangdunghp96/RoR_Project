@@ -16,7 +16,7 @@
       <h1><%= link_to image_tag( "logo3.jpg", alt:"logo3.jpg"), index_path, "data-turbolinks":false %></h1>
     </div>
     <div class="col-md-6 header-middle">
-      <form accept-charset="UTF-8" action="/searches" method="get">
+      <form accept-charset="UTF-8" action="/search" method="get">
         <div class="search">
           <input type="search" id ="autocomplete-search" name="term" placeholder="Type keyword" required="">
         </div>
@@ -28,7 +28,7 @@
       <div class="results"></div>
       <script type="text/javascript">
         $("#autocomplete-search").autocomplete({
-          source: "/searches",
+          source: "/search",
           minLength: 1,
           appendTo: ".results",
           select: function(event,ui){

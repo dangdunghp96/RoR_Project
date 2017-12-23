@@ -5,4 +5,4 @@
 //= require jquery-ui
 //= require jquery.flexslider
 //= require jquery.easing
-//= require_tree
+//= require_tree .

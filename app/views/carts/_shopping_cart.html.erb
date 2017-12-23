@@ -37,8 +37,11 @@
               Total: <span><%= number_to_currency current_order.subtotal %></span>
             </li>
           </ul>
+          <div class="checkout-btn">
+            <%= link_to "Check out", checkout_path, type: "button", class: "btn btn btn-primary" %>
+          </div>
         </div>
-        <div class="clearfix"> </div>
+        <div class="clearfix"></div>
       </div>
     <% end %>
   </div>
