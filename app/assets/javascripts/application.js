@@ -1,3 +1,4 @@
+//= require cable
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -5,4 +6,7 @@
 //= require jquery-ui
 //= require jquery.flexslider
 //= require jquery.easing
-//= require_tree .
+//= require easyResponsiveTabs
+//= require imagezoom
+//= require pignose.layerslider
+//= require responsiveslides.min

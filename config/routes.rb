@@ -13,4 +13,8 @@ Rails.application.routes.draw do
   resources :order_items, only: [:create, :update, :destroy]
   resources :categories
   resources :orders, only: :index
+
+  namespace :admin do
+    root to: "admin#index"
+  end
 end

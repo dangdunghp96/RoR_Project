@@ -11,8 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require jquery-ui
- *= require flexslider.css
- *= require_tree .
+ *= require flexslider
+ *= require pignose.layerslider
+ *= require style
  *= require_self
  */
-
