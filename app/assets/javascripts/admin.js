@@ -1,15 +1,7 @@
 //= require cable
+//= require admin/Chart
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require bootstrap-sprockets
-//= require jquery-ui
-//= require admin/Chart
-//= require admin/classie
-//= require admin/jquery.flexisel
 //= require admin/jquery.flot.min
-//= require admin/scripts
-//= require admin/skycons
-//= require admin/uisearch
-//= require admin/wow.min
-//= require admin/jquery.nicescroll
+//= require bootstrap-sprockets
