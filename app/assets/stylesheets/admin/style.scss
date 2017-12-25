@@ -515,7 +515,7 @@ footer {
     width: 100%;
     border-top: 1px solid #eff0f4;
     text-align:center;
-    position: fixed;
+    position: relative;
     bottom: 0;
 }
 footer  p {
@@ -1717,7 +1717,8 @@ ul.dropdown-menu {
 /********* profile details **********/
 .profile_details{
 	float: right;
-    margin: 0 4.8em 0 1em;
+  margin: 0 4.8em 0 1em;
+  padding-right: 150px;
 }
 .profile_details_drop .lnr.lnr-chevron-up{
 	display:none;
