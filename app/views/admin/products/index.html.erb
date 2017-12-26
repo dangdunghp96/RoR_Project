@@ -1,0 +1,42 @@
+<% content_for :content do %>
+<div style="padding-top: 10px">
+  <button type="button" class="btn btn-primary" data-toggle="modal"  data-target="#new_category_Modal"><span class="glyphicon glyphicon-plus"></span>Add new category</button>
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#new_provider_Modal"><span class="glyphicon glyphicon-plus"></span>Add new provider</button>
+  <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span>Add new product</button>
+</div>
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @products.each do |product| %>
+      <tr>
+        <td><%= product.id %></td>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td><%= product.price %></td>
+        <td><%= product.quantity %></td>
+        <th>
+          <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span>Edit</button>
+          <button type="button" class="btn btn-danger btn-sm" data-confirm="Are you sure?" ><span class="glyphicon glyphicon-trash"></span>Delete</button>
+        </th>
+      </tr>
+<% end %>
+    </tbody>
+  </table>
+<div class="text-right">
+  <ul class="flickr_pagination">
+    <%= will_paginate @products %>
+  </ul>
+</div>
+<%= render "new_provider"%>
+<%= render "new_category"%>
+<% end %>
+
