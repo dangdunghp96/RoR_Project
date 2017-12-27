@@ -9,21 +9,25 @@
 <% content_for :content do %>
   <div class="men-wear">
     <div class="container">
-      <% if !@pendings.empty? %>
-        <div class="pending-content">
-          <h3 class="pending-head">Pending</h3>
-          <% @pendings.each do |item| %>
-            <p>Total: <%= number_to_currency item.subtotal %> on date: <%= item.updated_at %></p>
-          <% end %>
-        </div>
-      <% end %>
-      <% if !@completes.empty? %>
-        <div class="complete-content">
-          <h3 class="complete-head">Complete</h3>
-          <% @completes.each do |item| %>
-            <p>Total: <%= number_to_currency item.subtotal %> on date: <%= item.updated_at %></p>
-          <% end %>
-        </div>
+      <% if @completes.empty? && @pendings.empty? %>
+        <h3 class="pending-head">Nothing to display</h3>
+      <% else %>
+        <% if !@pendings.empty? %>
+          <div class="pending-content">
+            <h3 class="pending-head">Pending</h3>
+            <% @pendings.each do |item| %>
+              <p>Total: <%= number_to_currency item.subtotal %> on date: <%= item.updated_at %></p>
+            <% end %>
+          </div>
+        <% end %>
+        <% if !@completes.empty? %>
+          <div class="complete-content">
+            <h3 class="complete-head">Complete</h3>
+            <% @completes.each do |item| %>
+              <p>Total: <%= number_to_currency item.subtotal %> on date: <%= item.updated_at %></p>
+            <% end %>
+          </div>
+        <% end %>
       <% end %>
     </div>
     <div class="clearfix"></div>
