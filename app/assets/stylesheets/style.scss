@@ -5148,3 +5148,16 @@ table th {
   margin-bottom: 30px;
 }
 /* -- //order history -- */
+
+.login-grids .fb_signin {
+  width: 20%;
+  background-color: blue;
+  border-radius: 5px;
+  color: white;
+  margin: auto;
+  margin-top: 15px;
+  padding: 5px;
+}
+.login-grids .fb_signin:hover {
+  background-color: #ff9900;
+}

@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post "/signin", to: "sessions#create", as: "signin"
   delete "/logout", to: "sessions#destroy"
   get "/search", to: "searches#index"
+  get "/auth/:provider/callback", :to => "sessions#create"
+  get "/auth/failure", :to => "sessions#failure"
 
   resources :users
   resources :products, only: [:index, :show]
