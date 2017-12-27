@@ -17,6 +17,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: "admin#index"
+    get "/orders/complete/:id", to: "orders#complete", as: "complete"
     resources :products, except: :show
     resources :providers, only: :create
     resources :categories, only: :create

@@ -13,6 +13,11 @@ class Order < ApplicationRecord
     save!
   end
 
+  def complete
+    self[:order_status_id] = 3
+    save!
+  end
+
   class << self
     def get_pending_orders
       where(order_status_id: 2)
