@@ -24,6 +24,8 @@ gem "jquery-easing-rails"
 gem "will_paginate", "~> 3.1.0"
 gem "carrierwave"
 gem "mini_magick"
+gem "omniauth"
+gem "omniauth-facebook"
 
 
 group :development, :test do
