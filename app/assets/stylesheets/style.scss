@@ -5132,3 +5132,19 @@ table th {
     padding: 10px;
     text-align: center;
 }
+
+/* -- order history -- */
+.pending-head, .complete-head {
+  color: #ff9900;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.complete-head {
+  margin-top: 30px;
+}
+.pending-content, .complete-head {
+  border: solid 2px #ff9900;
+  border-radius: 20px;
+  text-align: center;
+}
+/* -- //order history -- */

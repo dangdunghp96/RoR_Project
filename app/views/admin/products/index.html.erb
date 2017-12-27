@@ -39,8 +39,8 @@
     <%= will_paginate @products %>
   </ul>
 </div>
-<%= render "new_provider"%>
-<%= render "new_category"%>
+<%= render "admin/providers/new_provider"%>
+<%= render "admin/categories/new_category"%>
 <%= render "new_product", providers: @provider_list%>
 <% end %>
 
