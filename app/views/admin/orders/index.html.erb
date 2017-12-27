@@ -1,2 +1,35 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+<% content_for :content do %>
+<table class="table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User ID</th>
+        <th>Total</th>
+        <th>Created at</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+        <td><%= order.user_id %></td>
+        <td><%= order.subtotal %><span>$</span></td>
+        <td><%= order.created_at %></td>
+        <th>
+          <a href="<%= admin_complete_path(order.id) %>" type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span>Complete</a>
+          <!--<%= link_to "#", data: { confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger btn-sm" do %>
+            <span class="glyphicon glyphicon-trash"></span>
+            delete
+          <% end %> -->
+        </th>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-right">
+    <ul class="flickr_pagination">
+      <%= will_paginate @product %>
+    </ul>
+  </div>
+<% end %>

@@ -35,8 +35,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <span>Products</span></a>
           </li>
           <li><a href="<%= admin_orders_path %>"><i class="lnr lnr-cart"></i> <span>Orders</span></a></li>
-          <li><a href="tables.html"><i class="lnr lnr-users"></i> <span>Users</span></a></li>
-          <li><a href="tables.html"><i class="lnr lnr-database"></i> <span>Back up</span></a></li>
+          <li><a href="#"><i class="lnr lnr-users"></i> <span>Users</span></a></li>
+          <li><a href="#"><i class="lnr lnr-database"></i> <span>Back up</span></a></li>
         </ul>
         <!--sidebar nav end-->
       </div>
@@ -58,13 +58,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="profile_img">
                       <span style="background:url() no-repeat center"> </span>
                       <div class="user-name">
-                        <p>Nhan<span>Administrator</span></p>
+                        <p><%= current_user.name %><span>Administrator</span></p>
                       </div>
                       <div class="clearfix"></div>
                     </div>
                   </a>
                   <ul class="dropdown-menu drp-mnu">
-                    <li> <a href="sign-up.html"><i class="fa fa-sign-out"></i> Logout</a> </li>
+                    <li><a data-method="delete" href="<%= logout_path %>"><i class="fa fa-sign-out"></i>Logout</a> </li>
                   </ul>
                 </li>
                 <div class="clearfix"> </div>
