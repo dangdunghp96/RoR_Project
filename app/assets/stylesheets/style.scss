@@ -5139,12 +5139,12 @@ table th {
   margin-left: 30px;
   margin-bottom: 20px;
 }
-.complete-head {
-  margin-top: 30px;
-}
-.pending-content, .complete-head {
+.pending-content, .complete-content {
   border: solid 2px #ff9900;
   border-radius: 20px;
   text-align: center;
+}
+.pending-content {
+  margin-bottom: 30px;
 }
 /* -- //order history -- */

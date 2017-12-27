@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   root to: "app#index"
   get "/index", to: "app#index", as: "index"
+  get "/contact", to: "app#contact", as: "contact"
   get "/checkout", to: "orders#checkout", as: "checkout"
   post "/signup", to: "users#create", as: "signup"
   post "/signin", to: "sessions#create", as: "signin"
