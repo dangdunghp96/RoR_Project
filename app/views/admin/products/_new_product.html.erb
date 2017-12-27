@@ -1,0 +1,62 @@
+<div id="new_product_Modal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add new product</h4>
+        </div>
+        <div class="modal-body">
+          <form id="new_product" class="form-horizontal new_product" accept-charset="UTF-8" action="<%= admin_products_path %>" method="post" enctype="multipart/form-data">
+            <%= hidden_field_tag :authenticity_token,form_authenticity_token %>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="product_provider">Provider:</label>
+              <div class="col-sm-10">
+                <select name="product[provider_id]" id="product_provider">
+                  <% providers.each do |provider|%>
+                  <option value="<%= provider.id %>"><%= provider.name %></option>
+                  <% end %>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="product_name">Name:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="product_name" type="text" name="product[name]" value="" required="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="product_description">Description:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="product_description" type="text" name="product[description]" value="" required="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="product_price">Price:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="product_price" type="text" name="product[price]" value="" required="">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="product_quantity">Quantity:</label>
+              <div class="col-sm-10">
+                <input class="form-control" id="product_quantity" type="text" name="product[quantity]" value="" required="">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-10">
+                <input type="file" name="product[image]" id="fileToUpload">
+                <input type="file" name="product[image1]" id="fileToUpload">
+                <input type="file" name="product[image2]" id="fileToUpload">
+                <input type="file" name="product[image3]" id="fileToUpload">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Save</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
