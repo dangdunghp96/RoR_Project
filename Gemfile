@@ -22,6 +22,8 @@ gem "jquery-ui-rails"
 gem "flexslider"
 gem "jquery-easing-rails"
 gem "will_paginate", "~> 3.1.0"
+gem "carrierwave"
+gem "mini_magick"
 
 
 group :development, :test do
