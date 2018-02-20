@@ -15,7 +15,10 @@
         <ul class="dropdown-menu6">
           <li>
             <div id="slider-range"></div>
-            <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+            <div id="input-price">
+              <input type="text" id="price-min" style="font-weight: normal;" />
+              <input type="text" id="price-max" style="font-weight: normal; position: absolute;"/>
+            </div>
           </li>
         </ul>
         <!---->
@@ -24,16 +27,29 @@
         $(window).load(function() {
           $("#slider-range").slider({
             range: true,
-            min: 0,
-            max: 9000,
-            values: [1000, 7000],
+            min: <% if @pro_of_cate != [] %><%= @pro_of_cate.first.price %><% end %>,
+            max: <% if @pro_of_cate != [] %><%= @pro_of_cate.last.price %><% end %>,
+            values: [<% if @pro_of_cate != [] %><%= @pro_of_cate.first.price %><% end %>,<% if @pro_of_cate != [] %><%= @pro_of_cate.last.price %><% end %>],
             slide: function(event, ui) {
-              $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+              $("#price-min").val("$" + ui.values[0]);
+              $("#price-max").val("$" + ui.values[1]);
+              slideFilter(ui.values[0],ui.values[1]);
             }
           });
-          $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+          $("#price-min").val("$" + $("#slider-range").slider("values",0));
+          $("#price-max").val("$" + $("#slider-range").slider("values",1));
 
         }); //]]>
+        function slideFilter(min, max){
+          $(".info-product-price > h5").each(function(){
+            var price = $(this).text();
+            var number = Number(price.replace(/[^0-9\.-]+/g,""));
+            if( number <= max && number >= min){
+              $(this).parent().parent().parent().parent().parent().parent().show();
+            }
+            else $(this).parent().parent().parent().parent().parent().parent().hide();
+          });
+        }
         </script>
         <!---->
       </div>
@@ -150,51 +166,6 @@
         <div class="clearfix"></div>
       </div>
       <div class="men-wear-top">
-        <script>
-        // You can also use "$(window).load(function() {"
-        $(function() {
-          // Slideshow 4
-          $("#slider3").responsiveSlides({
-            auto: true,
-            pager: true,
-            nav: false,
-            speed: 500,
-            namespace: "callbacks",
-            before: function() {
-              $('.events').append("<li>before event fired.</li>");
-            },
-            after: function() {
-              $('.events').append("<li>after event fired.</li>");
-            }
-          });
-        });
-        </script>
-        <div id="top" class="callbacks_container">
-          <ul class="rslides" id="slider3">
-            <li>
-              <%= image_tag "men21.jpg", alt:"men21.jpg", class:"img-responsive" %>
-            </li>
-            <li>
-              <%= image_tag "men11.jpg", alt:"men11.jpg", class:"img-responsive" %>
-            </li>
-            <li>
-              <%= image_tag "men21.jpg", alt:"men21.jpg", class:"img-responsive" %>
-            </li>
-            <li>
-              <%= image_tag "men11.jpg", alt:"men11.jpg", class:"img-responsive" %>
-            </li>
-          </ul>
-        </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="men-wear-bottom">
-        <div class="col-sm-4 men-wear-left">
-          <%= image_tag "men31.jpg", alt:"men31.jpg", class:"img-responsive"%>
-        </div>
-        <div class="col-sm-8 men-wear-right">
-          <h4>Exclusive Women's Collections</h4>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit. </p>
-        </div>
         <div class="clearfix"></div>
       </div>
       <% if @pro_of_cate != [] %>
@@ -216,7 +187,7 @@
                 <div class="occasion-cart">
                   <%= form_for @order_item, remote: true do |f| %>
                     <div class="info-product-price description">
-                      <h5>Unit Price: <span style="color: green"><%= number_to_currency product.price %></span></h5>
+                      <h5><span style="color: green"><%= number_to_currency product.price %></span></h5>
                     </div>
                     <div class="input-group add-to-cart">
                       <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>

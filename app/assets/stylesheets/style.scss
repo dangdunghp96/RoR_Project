@@ -2074,6 +2074,22 @@ input#amount,input#amount1 {
     border: 1px solid #D2D2D2 !important;
     padding: 4px 0;
 }
+input#price-min,input#price-max {
+    font-size: 18px;
+    outline: none;
+    word-spacing: 1em;
+    background: none;
+    color: #000 !important;
+    text-align: center;
+    border: 1px solid #D2D2D2 !important;
+    padding: 4px 0;
+    width: 50%;
+}
+#input-price {
+    left: 0%;
+    top: 30px;
+    padding-top: 4px;
+}
 ul.dropdown-menu6 li a {
 text-decoration: none;
 }
