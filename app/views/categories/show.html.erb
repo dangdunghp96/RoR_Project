@@ -153,18 +153,48 @@
       <div class="sort-grid">
         <div class="sorting">
           <h6>Sort By</h6>
-          <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-            <option value="null">Default</option>
-            <option value="null">Name(A - Z)</option>
-            <option value="null">Name(Z - A)</option>
-            <option value="null">Price(High - Low)</option>
-            <option value="null">Price(Low - High)</option>
-            <option value="null">Model(A - Z)</option>
-            <option value="null">Model(Z - A)</option>
+          <select id="sort1" class="frm-field required sect">
+            <option value="1">Price(Low - High)</option>
+            <option value="2">Price(High - Low)</option>
+            <option value="3">Name(A - Z)</option>
+            <option value="4">Name(Z - A)</option>
           </select>
           <div class="clearfix"></div>
         </div>
-        <div class="sorting">
+        <script type="text/javascript">
+          $(document).ready(function(){
+            var list = $(".product-men").get();
+            $("#sort1").change(function(){
+              switch($(this).val()){
+                case "1": list.sort(ascendPrice);
+                          $("#product-list").html(list);
+                        break;
+                case "2": list.sort(descendPrice);
+                          $("#product-list").html(list);
+                        break;
+                case "3": alert($(this).val());
+                        break;
+                case "4":
+                default:
+              }
+            });
+          });
+          function descendPrice(a, b){
+            var value1 = $(a).children().children().children().children().children().eq(2).text();
+            var value2 = $(b).children().children().children().children().children().eq(2).text();
+            var number1 = Number(value1.replace(/[^0-9\.-]+/g,""));
+            var number2 = Number(value2.replace(/[^0-9\.-]+/g,""));
+            return  number2 - number1;
+          }
+          function ascendPrice(a, b){
+            var value1 = $(a).children().children().children().children().children().eq(2).text();
+            var value2 = $(b).children().children().children().children().children().eq(2).text();
+            var number1 = Number(value1.replace(/[^0-9\.-]+/g,""));
+            var number2 = Number(value2.replace(/[^0-9\.-]+/g,""));
+            return  number1 - number2;
+          }
+        </script>
+        <!--<div class="sorting">
           <h6>Showing</h6>
           <select id="country2" onchange="change_country(this.value)" class="frm-field required sect">
             <option value="null">7</option>
@@ -173,49 +203,51 @@
             <option value="null">35</option>
           </select>
           <div class="clearfix"></div>
-        </div>
+        </div>-->
         <div class="clearfix"></div>
       </div>
       <div class="men-wear-top">
         <div class="clearfix"></div>
       </div>
-      <% if @pro_of_cate != [] %>
-        <% @pro_of_cate.each do |product| %>
-          <div class="col-md-4 product-men yes-marg">
-            <div class="men-pro-item simpleCart_shelfItem">
-              <div class="men-thumb-item">
-                <%= image_tag product.image, alt:product.image, class:"pro-image-front" %>
-                <%= image_tag product.image, alt:product.image, class:"pro-image-back" %>
-                <div class="men-cart-pro">
-                  <div class="inner-men-cart-pro">
-                    <%= link_to "Quick View", product_path(product.id), class: "link-product-add-cart" %>
+      <div id ="product-list">
+        <% if @pro_of_cate != [] %>
+          <% @pro_of_cate.each do |product| %>
+            <div class="col-md-4 product-men yes-marg">
+              <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                  <%= image_tag product.image, alt:product.image, class:"pro-image-front" %>
+                  <%= image_tag product.image, alt:product.image, class:"pro-image-back" %>
+                  <div class="men-cart-pro">
+                    <div class="inner-men-cart-pro">
+                      <%= link_to "Quick View", product_path(product.id), class: "link-product-add-cart" %>
+                    </div>
                   </div>
+                  <span class="product-new-top">New</span>
                 </div>
-                <span class="product-new-top">New</span>
-              </div>
-              <div class="item-info-product">
-                <h4><%= link_to product.name, product_path(product.id), class:"item_name" %></h4>
-                <div class="occasion-cart">
-                  <%= form_for @order_item, remote: true do |f| %>
-                    <div class="info-product-price description">
-                      <h5><span style="color: green"><%= number_to_currency product.price %></span></h5>
-                    </div>
-                    <div class="input-group add-to-cart">
-                      <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
-                      <div class="input-group-btn">
-                        <%= f.hidden_field :product_id, value: product.id %>
-                        <%= f.submit "Add to Cart", class: "btn btn-primary input-group-button", "data-turbolinks":false %>
+                <div class="item-info-product">
+                  <h4><%= link_to product.name, product_path(product.id), class:"item_name" %></h4>
+                  <div class="occasion-cart">
+                    <%= form_for @order_item, remote: true do |f| %>
+                      <div class="info-product-price description">
+                        <h5><span style="color: green"><%= number_to_currency product.price %></span></h5>
                       </div>
-                    </div>
-                  <% end %>
+                      <div class="input-group add-to-cart">
+                        <%= f.number_field :quantity, value: 1, class: "form-control", min: 1 %>
+                        <div class="input-group-btn">
+                          <%= f.hidden_field :product_id, value: product.id %>
+                          <%= f.submit "Add to Cart", class: "btn btn-primary input-group-button", "data-turbolinks":false %>
+                        </div>
+                      </div>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% else %>
+          <%= "--- Information not found ---" %>
         <% end %>
-      <% else %>
-        <%= "--- Information not found ---" %>
-      <% end %>
+      </div>
       <div class="clearfix"></div>
     </div>
     <div class="text-right">
